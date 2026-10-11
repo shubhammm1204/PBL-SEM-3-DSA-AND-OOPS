@@ -1,0 +1,737 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Bites | Smart Canteen</title>
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+    <link rel="stylesheet" href="home.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav class="navbar">
+        <a href="#home" class="logo">
+          <img src="logo.png" alt="Campus Bites logo" />
+          <span>Campus Bites</span>
+        </a>
+
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#why-us">About us</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="nav-actions">
+          <div class="token-balance">
+            <i class="fa-solid fa-coins"></i>
+            <span id="navbar-balance">--</span>
+            <small>Tokens</small>
+          </div>
+
+          <button
+            id="cart-toggle"
+            class="cart"
+            type="button"
+            aria-label="Open shopping cart"
+          >
+            <i class="fa-solid fa-cart-shopping"></i>
+            <span id="cart-count">0</span>
+          </button>
+
+          <a href="login.html" class="login">Login</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero" id="home">
+        <div class="hero-content">
+          <p class="hero-small">YOUR CAMPUS FOOD HUB</p>
+          <h1>Good Food.<br /><span>Good Mood.</span></h1>
+          <p class="hero-text">
+            Delicious food, refreshing drinks and quick bites made for your
+            campus life.
+          </p>
+
+          <div class="hero-buttons">
+            <a href="#menu" class="order-btn">Order Now!</a>
+            <a href="#menu" class="menu-btn">Explore Menu</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORIES -->
+      <section class="categories">
+        <div class="section-heading">
+          <p>Explore</p>
+          <h2>What are you craving?</h2>
+          <span>Find your favourite campus bites.</span>
+        </div>
+
+        <div class="category-container">
+          <a href="#menu" class="category-card">
+            <i class="fa-solid fa-burger"></i>
+            <h3>Burgers</h3>
+            <p>Juicy &amp; delicious</p>
+          </a>
+
+          <a href="#menu" class="category-card">
+            <i class="fa-solid fa-pizza-slice"></i>
+            <h3>Pizza</h3>
+            <p>Hot &amp; cheesy</p>
+          </a>
+
+          <a href="#menu" class="category-card">
+            <i class="fa-solid fa-bowl-food"></i>
+            <h3>Noodles</h3>
+            <p>Quick &amp; tasty</p>
+          </a>
+
+          <a href="#menu" class="category-card">
+            <i class="fa-solid fa-mug-hot"></i>
+            <h3>Drinks</h3>
+            <p>Cool &amp; refreshing</p>
+          </a>
+
+          <a href="#menu" class="category-card">
+            <i class="fa-solid fa-ice-cream"></i>
+            <h3>Desserts</h3>
+            <p>Sweet treats</p>
+          </a>
+        </div>
+      </section>
+
+      <!-- MENU -->
+      <section class="popular-food" id="menu">
+        <div class="section-heading">
+          <p>Our Menu</p>
+          <h2>Popular Bites</h2>
+          <span>Everyone's favourite food on campus.</span>
+        </div>
+
+        <div class="food-container">
+          <article
+            class="food-card"
+            data-item-id="M001"
+            data-name="Campus Burger"
+            data-price="69"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Campus Burger" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Burgers</span>
+              <h3>Campus Burger</h3>
+              <p>Crispy patty, fresh veggies and cheese.</p>
+              <div class="food-bottom">
+                <span class="price">₹69</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M002"
+            data-name="Cheese Pizza"
+            data-price="99"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Cheese Pizza" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Pizza</span>
+              <h3>Cheese Pizza</h3>
+              <p>Hot pizza topped with melted cheese.</p>
+              <div class="food-bottom">
+                <span class="price">₹99</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M003"
+            data-name="Masala Noodles"
+            data-price="50"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Masala Noodles" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Noodles</span>
+              <h3>Masala Noodles</h3>
+              <p>Quick, warm and flavourful noodles.</p>
+              <div class="food-bottom">
+                <span class="price">₹50</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M004"
+            data-name="French Fries"
+            data-price="49"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="French Fries" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Snacks</span>
+              <h3>French Fries</h3>
+              <p>Golden and crispy potato fries.</p>
+              <div class="food-bottom">
+                <span class="price">₹49</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M005"
+            data-name="Cold Coffee"
+            data-price="45"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Cold Coffee" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Drinks</span>
+              <h3>Cold Coffee</h3>
+              <p>A refreshing cold coffee for your break.</p>
+              <div class="food-bottom">
+                <span class="price">₹45</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M006"
+            data-name="Chocolate Brownie"
+            data-price="55"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Chocolate Brownie" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Desserts</span>
+              <h3>Chocolate Brownie</h3>
+              <p>A sweet chocolate treat.</p>
+              <div class="food-bottom">
+                <span class="price">₹55</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M017"
+            data-name="Aloo Tikki Burger"
+            data-price="49"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Aloo Tikki Burger" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Burgers</span>
+              <h3>Aloo Tikki Burger</h3>
+              <p>Crispy aloo tikki with fresh vegetables.</p>
+              <div class="food-bottom">
+                <span class="price">₹49</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M018"
+            data-name="Double Cheese Burger"
+            data-price="89"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Double Cheese Burger" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Burgers</span>
+              <h3>Double Cheese Burger</h3>
+              <p>A filling burger loaded with cheese.</p>
+              <div class="food-bottom">
+                <span class="price">₹89</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M019"
+            data-name="Farmhouse Pizza"
+            data-price="129"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Farmhouse Pizza" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Pizza</span>
+              <h3>Farmhouse Pizza</h3>
+              <p>Pizza topped with vegetables and cheese.</p>
+              <div class="food-bottom">
+                <span class="price">₹129</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M020"
+            data-name="Paneer Pizza"
+            data-price="139"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Paneer Pizza" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Pizza</span>
+              <h3>Paneer Pizza</h3>
+              <p>Paneer cubes, vegetables and melted cheese.</p>
+              <div class="food-bottom">
+                <span class="price">₹139</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M021"
+            data-name="Schezwan Noodles"
+            data-price="70"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Schezwan Noodles" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Noodles</span>
+              <h3>Schezwan Noodles</h3>
+              <p>Spicy noodles with a Schezwan flavour.</p>
+              <div class="food-bottom">
+                <span class="price">₹70</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M022"
+            data-name="Veg Momos"
+            data-price="50"
+          >
+            <div class="food-image"><img src="logo.png" alt="Veg Momos" /></div>
+            <div class="food-info">
+              <span class="food-category">Snacks</span>
+              <h3>Veg Momos</h3>
+              <p>Steamed vegetable dumplings with chutney.</p>
+              <div class="food-bottom">
+                <span class="price">₹50</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M023"
+            data-name="Fried Momos"
+            data-price="65"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Fried Momos" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Snacks</span>
+              <h3>Fried Momos</h3>
+              <p>Crispy momos served with spicy chutney.</p>
+              <div class="food-bottom">
+                <span class="price">₹65</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M024"
+            data-name="Cheese Sandwich"
+            data-price="55"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Cheese Sandwich" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Snacks</span>
+              <h3>Cheese Sandwich</h3>
+              <p>Grilled sandwich filled with melted cheese.</p>
+              <div class="food-bottom">
+                <span class="price">₹55</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M025"
+            data-name="Paneer Wrap"
+            data-price="79"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Paneer Wrap" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Snacks</span>
+              <h3>Paneer Wrap</h3>
+              <p>Spiced paneer wrapped with fresh vegetables.</p>
+              <div class="food-bottom">
+                <span class="price">₹79</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M026"
+            data-name="Peri Peri Fries"
+            data-price="59"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Peri Peri Fries" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Snacks</span>
+              <h3>Peri Peri Fries</h3>
+              <p>Crispy fries tossed in peri peri seasoning.</p>
+              <div class="food-bottom">
+                <span class="price">₹59</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M027"
+            data-name="Mango Shake"
+            data-price="60"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Mango Shake" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Drinks</span>
+              <h3>Mango Shake</h3>
+              <p>A creamy and refreshing mango drink.</p>
+              <div class="food-bottom">
+                <span class="price">₹60</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M028"
+            data-name="Oreo Shake"
+            data-price="75"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Oreo Shake" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Drinks</span>
+              <h3>Oreo Shake</h3>
+              <p>A chilled shake with chocolate cookie flavour.</p>
+              <div class="food-bottom">
+                <span class="price">₹75</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M029"
+            data-name="Hot Coffee"
+            data-price="25"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Hot Coffee" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Drinks</span>
+              <h3>Hot Coffee</h3>
+              <p>Freshly prepared hot coffee.</p>
+              <div class="food-bottom">
+                <span class="price">₹25</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M030"
+            data-name="Gulab Jamun"
+            data-price="35"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Gulab Jamun" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Desserts</span>
+              <h3>Gulab Jamun</h3>
+              <p>Soft, sweet traditional Indian dessert.</p>
+              <div class="food-bottom">
+                <span class="price">₹35</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+
+          <article
+            class="food-card"
+            data-item-id="M031"
+            data-name="Chocolate Waffle"
+            data-price="69"
+          >
+            <div class="food-image">
+              <img src="logo.png" alt="Chocolate Waffle" />
+            </div>
+            <div class="food-info">
+              <span class="food-category">Desserts</span>
+              <h3>Chocolate Waffle</h3>
+              <p>A warm waffle topped with chocolate.</p>
+              <div class="food-bottom">
+                <span class="price">₹69</span>
+                <button class="add-cart" type="button">
+                  <i class="fa-solid fa-cart-plus"></i> Add
+                </button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- WHY US -->
+      <section class="why-us" id="why-us">
+        <div class="section-heading">
+          <p>Why Campus Bites?</p>
+          <h2>Made for Campus Life</h2>
+          <span>Everything you need for a quick and tasty meal.</span>
+        </div>
+
+        <div class="why-container">
+          <article class="why-card">
+            <i class="fa-solid fa-bolt"></i>
+            <h3>Quick Service</h3>
+            <p>Enjoy your favourite food without long queues.</p>
+          </article>
+
+          <article class="why-card">
+            <i class="fa-solid fa-wallet"></i>
+            <h3>Student Friendly</h3>
+            <p>Delicious food at student-friendly prices.</p>
+          </article>
+
+          <article class="why-card">
+            <i class="fa-solid fa-utensils"></i>
+            <h3>Fresh Food</h3>
+            <p>Freshly prepared meals for your campus cravings.</p>
+          </article>
+
+          <article class="why-card">
+            <i class="fa-solid fa-mobile-screen-button"></i>
+            <h3>Easy Ordering</h3>
+            <p>Browse, choose and order in just a few clicks.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- TOKENS -->
+      <section class="token-section">
+        <div class="token-content">
+          <p class="token-small">CAMPUS TOKENS</p>
+          <h2>Eat More. Queue Less.</h2>
+          <p>
+            Use Campus Tokens to pay for your favourite food without using cash
+            at the canteen.
+          </p>
+          <button type="button" class="token-btn" id="view-tokens">
+            <i class="fa-solid fa-coins"></i> View My Tokens
+          </button>
+        </div>
+
+        <div class="token-card">
+          <div class="token-icon"><i class="fa-solid fa-coins"></i></div>
+          <div>
+            <span>Available Balance</span>
+            <h3 id="card-balance">Loading...</h3>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer" id="contact">
+      <div class="footer-container">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <img src="logo.png" alt="Campus Bites logo" />
+            <span>Campus Bites</span>
+          </div>
+          <p>Your favourite campus food, just a few clicks away.</p>
+        </div>
+
+        <div class="footer-links">
+          <h3>Quick Links</h3>
+          <a href="#home">Home</a>
+          <a href="#menu">Menu</a>
+          <a href="#why-us">About Us</a>
+        </div>
+
+        <div class="footer-contact">
+          <h3>Contact Us</h3>
+          <p><i class="fa-solid fa-location-dot"></i> Campus Canteen</p>
+          <p><i class="fa-solid fa-envelope"></i> support@campusbites.com</p>
+        </div>
+
+        <div class="footer-social">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#" aria-label="Instagram"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="#" aria-label="Facebook"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a href="#" aria-label="Twitter"
+              ><i class="fa-brands fa-twitter"></i
+            ></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 Campus Bites. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- EXISTING CART: IDs preserved -->
+    <div class="cart-overlay" id="cart-overlay"></div>
+
+    <aside
+      class="cart-panel"
+      id="cart-panel"
+      aria-label="Shopping cart"
+      aria-hidden="true"
+    >
+      <div class="cart-header">
+        <h2><i class="fa-solid fa-cart-shopping"></i> Your Cart</h2>
+        <button
+          id="cart-close"
+          class="cart-close"
+          type="button"
+          aria-label="Close cart"
+        >
+          &times;
+        </button>
+      </div>
+
+      <div id="cart-items" class="cart-items">
+        <p class="empty-cart">Your cart is empty.</p>
+      </div>
+
+      <div class="cart-footer">
+        <label for="table-number">Table number</label>
+        <input
+          id="table-number"
+          type="number"
+          min="1"
+          max="1000"
+          step="1"
+          value="1"
+        />
+
+        <div class="cart-total">
+          <span>Total</span>
+          <strong>₹<span id="cart-total">0</span></strong>
+        </div>
+
+        <button id="place-order" class="place-order-btn" type="button" disabled>
+          Place Order
+        </button>
+
+        <p id="cart-message" role="status" aria-live="polite"></p>
+      </div>
+    </aside>
+
+    <script src="home.js"></script>
+  </body>
+</html>
