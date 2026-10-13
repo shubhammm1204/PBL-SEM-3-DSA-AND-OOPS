@@ -1,7 +1,7 @@
-
 "use strict";
 
-const API_URL = "http://localhost:18080";
+// Automatically adapts to whatever IP/URL the browser opened (e.g. http://10.109.187.77:3000)
+const API_URL = window.location.origin;
 const STUDENT_ID = "GEU101";
 
 const cart = new Map();
@@ -16,6 +16,36 @@ const cartTotal = document.getElementById("cart-total");
 const cartMessage = document.getElementById("cart-message");
 const placeOrderButton = document.getElementById("place-order");
 const tableNumberInput = document.getElementById("table-number");
+const tableSelector = document.getElementById("tableSelector");
+
+// --- TABLE NUMBER MANAGEMENT & SYNC ---
+function syncTableNumber(value) {
+  let tableNum = Number(value);
+  if (isNaN(tableNum) || tableNum < 1) tableNum = 1;
+  if (tableNum > 5) tableNum = 5;
+
+  localStorage.setItem("activeTableNumber", tableNum);
+  if (tableSelector) tableSelector.value = tableNum;
+  if (tableNumberInput) tableNumberInput.value = tableNum;
+
+  const newUrl = new URL(window.location.href);
+  newUrl.searchParams.set("table", tableNum);
+  window.history.replaceState({}, "", newUrl);
+}
+
+function initTableSync() {
+  const urlParams = new URLSearchParams(window.location.search);
+  let activeTable = Number(urlParams.get("table")) || Number(localStorage.getItem("activeTableNumber")) || 1;
+  syncTableNumber(activeTable);
+
+  if (tableSelector) {
+    tableSelector.addEventListener("change", (e) => syncTableNumber(e.target.value));
+  }
+  if (tableNumberInput) {
+    tableNumberInput.addEventListener("input", (e) => syncTableNumber(e.target.value));
+    tableNumberInput.addEventListener("change", (e) => syncTableNumber(e.target.value));
+  }
+}
 
 // Display messages safely.
 function showCartMessage(message, type = "") {
@@ -215,9 +245,9 @@ placeOrderButton.addEventListener("click", async () => {
   if (
     !Number.isInteger(tableNumber) ||
     tableNumber < 1 ||
-    tableNumber > 1000
+    tableNumber > 5
   ) {
-    showCartMessage("Enter a valid table number.", "error");
+    showCartMessage("Enter a valid table number (1 to 5).", "error");
     return;
   }
 
@@ -257,7 +287,7 @@ placeOrderButton.addEventListener("click", async () => {
     renderCart();
 
     showCartMessage(
-      `Order ${result.orderId} accepted! Remaining balance: ${result.balance} Tokens.`,
+      `Order ${result.orderId} accepted for Table ${tableNumber}! Remaining balance: ${result.balance} Tokens.`,
       "success"
     );
 
@@ -284,6 +314,7 @@ document.getElementById("view-tokens").addEventListener("click", () => {
 });
 
 // Initialize the page.
+initTableSync();
 renderCart();
 checkBackend();
 loadBalance();

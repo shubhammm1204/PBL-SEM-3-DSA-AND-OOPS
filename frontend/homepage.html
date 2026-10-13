@@ -10,15 +10,61 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     />
     <link rel="stylesheet" href="home.css" />
+    <style>
+      /* Table Badge Pill in Navbar */
+      .table-badge-pill {
+        display: inline-flex;
+        align-items: center;
+        background-color: #e67e22;
+        color: #ffffff;
+        padding: 4px 12px;
+        border-radius: 20px;
+        font-weight: bold;
+        font-size: 0.9rem;
+        margin-left: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+      }
+      .table-badge-pill label {
+        margin-right: 5px;
+        cursor: pointer;
+      }
+      .table-badge-pill select {
+        background: transparent;
+        border: none;
+        color: #ffffff;
+        font-weight: bold;
+        font-size: 0.9rem;
+        cursor: pointer;
+        outline: none;
+      }
+      .table-badge-pill select option {
+        color: #333333;
+        background-color: #ffffff;
+      }
+    </style>
   </head>
 
   <body>
     <header>
       <nav class="navbar">
-        <a href="#home" class="logo">
-          <img src="logo.png" alt="Campus Bites logo" />
-          <span>Campus Bites</span>
-        </a>
+        <div style="display: flex; align-items: center;">
+          <a href="#home" class="logo">
+            <img src="logo.png" alt="Campus Bites logo" />
+            <span>Campus Bites</span>
+          </a>
+
+          <!-- TABLE NUMBER BADGE / DROPDOWN -->
+          <div class="table-badge-pill">
+            <label for="tableSelector">TB:</label>
+            <select id="tableSelector">
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+              <option value="5">5</option>
+            </select>
+          </div>
+        </div>
 
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
@@ -714,7 +760,7 @@
           id="table-number"
           type="number"
           min="1"
-          max="1000"
+          max="5"
           step="1"
           value="1"
         />
