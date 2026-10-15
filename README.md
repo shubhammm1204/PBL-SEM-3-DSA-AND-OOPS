@@ -16,7 +16,7 @@
 
 ## 📌 About the Project
 
-Welcome to our **Semester 3 Project-Based Learning (PBL) project**, developed collaboratively as part of our academic curriculum.
+Welcome to our **Semester 3 PBl Smart Canteen project**, developed collaboratively as part of our academic curriculum.
 
 This project focuses on applying concepts from **Data Structures & Algorithms (DSA)** and **Object-Oriented Programming (OOP)** to software development. It is an opportunity for our team to transform theoretical knowledge into practical implementation while learning how to design, develop, test, and maintain a software project together.
 
