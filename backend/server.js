@@ -4,10 +4,19 @@ const { execFile } = require('child_process');
 const os = require('os');
 
 const app = express();
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 const HOST = '0.0.0.0';
 
 app.use(express.json());
+
+// Enable CORS for all incoming requests (e.g., Live Server on port 5500)
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PATCH, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type');
+    if (req.method === 'OPTIONS') return res.sendStatus(204);
+    next();
+});
 
 // Serve static frontend files (CSS, JS, images, QR code SVGs)
 app.use(express.static(path.join(__dirname, '../frontend')));
@@ -74,6 +83,17 @@ app.get('/api/table-orders', async (req, res) => {
     try {
         const tableNumber = parseInt(req.query.table) || 0;
         const result = await callCppBridge({ action: 'GET_TABLE_ORDERS', tableNumber });
+        res.json(result);
+    } catch (err) {
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
+
+// API Endpoint for getting student balance
+app.get('/api/students/:id', async (req, res) => {
+    try {
+        const studentId = req.params.id;
+        const result = await callCppBridge({ action: 'GET_STUDENT_BALANCE', studentId });
         res.json(result);
     } catch (err) {
         res.status(500).json({ success: false, error: err.message });

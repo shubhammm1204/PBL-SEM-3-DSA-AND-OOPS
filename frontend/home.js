@@ -1,7 +1,9 @@
 "use strict";
 
-// Automatically adapts to whatever IP/URL the browser opened (e.g. http://10.109.187.77:3000)
-const API_URL = window.location.origin;
+// Automatically adapts to backend on whatever port it is opened, or defaults to port 5000
+const API_URL = (window.location.port && window.location.port !== "5500")
+  ? window.location.origin
+  : `http://${window.location.hostname || "localhost"}:5000`;
 const STUDENT_ID = "GEU101";
 
 const cart = new Map();

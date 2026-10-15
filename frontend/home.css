@@ -6,6 +6,7 @@
 }
 
 :root {
+  color-scheme: light;
   --brown: #402f0c;
   --brown-dark: #302306;
   --orange: #ed821b;
