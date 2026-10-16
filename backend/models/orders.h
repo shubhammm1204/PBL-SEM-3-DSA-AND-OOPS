@@ -7,11 +7,7 @@
 
 using namespace std;
 
-// ============================================================================
-// OOP CONCEPT: Composition
-// ============================================================================
-// OrderItem represents a line item within an order.
-// ============================================================================
+
 class OrderItem {
 private:
     string itemId;
@@ -33,13 +29,7 @@ public:
     int getSubtotal() const { return price * quantity; }
 };
 
-// ============================================================================
-// OOP CONCEPT: Composition & Encapsulation
-// ============================================================================
-// 1. Composition: An Order HAS-A collection of OrderItem objects (vector<OrderItem>).
-//    The lifecycle of the items is tied to the order.
-// 2. Encapsulation: Status transitions are validated (e.g., cannot jump from Cancelled to Served).
-// ============================================================================
+
 class Order {
 private:
     string orderId;

@@ -6,12 +6,7 @@
 
 using namespace std;
 
-// ============================================================================
-// OOP CONCEPT: Inheritance (Base Class) & Polymorphism (Virtual Functions)
-// ============================================================================
-// User is an abstract base class.
-// Student and Staff derive from User, demonstrating the "IS-A" relationship.
-// ============================================================================
+
 class User {
 protected:
     string id;

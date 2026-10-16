@@ -9,13 +9,7 @@
 
 using namespace std;
 
-// ============================================================================
-// OOP CONCEPT: Abstraction & Polymorphism (Abstract Base Class / Interface)
-// ============================================================================
-// BaseStorage defines a contract for persisting student and order data.
-// It hides the internal file-handling mechanics (Abstraction).
-// Any storage engine (FileStorage, DatabaseStorage) can implement this interface.
-// ============================================================================
+
 class BaseStorage {
 public:
     virtual ~BaseStorage() {}
@@ -27,33 +21,27 @@ public:
     virtual vector<string> loadOrders() = 0;
 };
 
-// ============================================================================
-// OOP CONCEPT: Inheritance & Polymorphism
-// ============================================================================
-// Storage inherits from BaseStorage and overrides all pure virtual functions.
-// ============================================================================
+
 class Storage : public BaseStorage {
 private:
     string studentFile;
     string orderFile;
 
-    // Helper: resolve relative file path regardless of launch directory
+    
     string resolvePath(const string &path) {
-        // 1. Try directly
+   
         ifstream direct(path.c_str());
         if (direct.good()) return path;
 
-        // 2. Try with "backend/" prefix
         string withBackend = "backend/" + path;
         ifstream bTest(withBackend.c_str());
         if (bTest.good()) return withBackend;
 
-        // 3. Try with "../" prefix
+      
         string withParent = "../" + path;
         ifstream pTest(withParent.c_str());
         if (pTest.good()) return withParent;
 
-        // Default to given path
         return path;
     }
 

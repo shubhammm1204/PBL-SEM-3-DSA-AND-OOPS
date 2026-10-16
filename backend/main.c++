@@ -14,11 +14,6 @@
 
 using namespace std;
 
-// ============================================================================
-// SMART CANTEEN: OOP & DSA VERIFICATION PROGRAM (C++11/C++14)
-// Run this file in your terminal during college viva/evaluations:
-//   g++ -std=c++11 main.c++ -o main.exe && ./main.exe
-// ============================================================================
 
 void demonstrateOOP() {
     cout << "\n======================================================\n";
@@ -27,10 +22,10 @@ void demonstrateOOP() {
 
     // 1. INHERITANCE & POLYMORPHISM
     cout << "\n[A] INHERITANCE & POLYMORPHISM (User -> Student):\n";
-    // Student IS-A User. Base class pointer pointing to derived class instance.
+
     User* userPtr = new Student("GEU101", "Rahul", 200);
     cout << "Created user via User* base pointer:\n";
-    userPtr->displayInfo(); // Polymorphic call (virtual method)
+    userPtr->displayInfo(); 
     cout << "Role identified dynamically via getRole(): " << userPtr->getRole() << "\n";
 
     // 2. ENCAPSULATION
@@ -63,7 +58,7 @@ void demonstrateOOP() {
 
     // 4. ABSTRACTION & POLYMORPHISM (Storage Interface)
     cout << "\n[D] ABSTRACTION & POLYMORPHISM (BaseStorage Interface):\n";
-    // BaseStorage is an abstract interface with pure virtual functions (= 0)
+  
     BaseStorage* storage = new Storage();
     bool saved = storage->saveStudent("GEU101", "Rahul", student.getBalance());
     cout << "Storage->saveStudent() called through BaseStorage* pointer: " 
@@ -74,9 +69,7 @@ void demonstrateOOP() {
 }
 
 void demonstrateDSA() {
-    cout << "\n======================================================\n";
-    cout << "       2. DATA STRUCTURES & ALGORITHMS (DSA)          \n";
-    cout << "======================================================\n";
+ 
 
     // 1. HASH MAP (std::unordered_map) - O(1) Fast Lookup
     cout << "\n[A] HASH MAP (std::unordered_map) - O(1) Average Lookup:\n";
@@ -134,17 +127,12 @@ void demonstrateDSA() {
 }
 
 int main() {
-    cout << "\n******************************************************\n";
-    cout << "*  SMARTCANTEEN: C++ OOP & DSA DEMONSTRATION         *\n";
-    cout << "*  College PBL Milestone (~40% Core Implementation)  *\n";
-    cout << "******************************************************\n";
+  
 
     demonstrateOOP();
     demonstrateDSA();
 
-    cout << "\n======================================================\n";
-    cout << "       3. PERSISTENCE IN C++ (FILE STORAGE)           \n";
-    cout << "======================================================\n";
+
 
     Storage storage;
     vector<string> students = storage.loadStudents();

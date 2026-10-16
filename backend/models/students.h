@@ -6,14 +6,7 @@
 
 using namespace std;
 
-// ============================================================================
-// OOP CONCEPT: Inheritance & Encapsulation
-// ============================================================================
-// 1. Inheritance: Student derives from User (Student IS-A User).
-// 2. Encapsulation: The 'balance' variable is PRIVATE.
-//    External code cannot directly change balance (e.g. balance = 999999 is blocked).
-//    Balance can only be modified through deductBalance() and addBalance() with validation!
-// ============================================================================
+
 class Student : public User {
 private:
     int balance; // Private data: encapsulated
@@ -25,7 +18,7 @@ public:
         : User(id, studentName, "Student"),
           balance(initialBalance < 0 ? 0 : initialBalance) {}
 
-    // Polymorphism: Overriding base class getRole()
+    //  Overriding base class getRole()
     string getRole() const override {
         return "Student";
     }

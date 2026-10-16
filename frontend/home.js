@@ -20,7 +20,7 @@ const placeOrderButton = document.getElementById("place-order");
 const tableNumberInput = document.getElementById("table-number");
 const tableSelector = document.getElementById("tableSelector");
 
-// --- TABLE NUMBER MANAGEMENT & SYNC ---
+//  TABLE NUMBER MANAGEMENT & SYNC
 function syncTableNumber(value) {
   let tableNum = Number(value);
   if (isNaN(tableNum) || tableNum < 1) tableNum = 1;
