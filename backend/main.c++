@@ -19,7 +19,7 @@ void demonstrateOOP() {
   
 
     // 1. INHERITANCE & POLYMORPHISM
-    cout << "\n[A] INHERITANCE & POLYMORPHISM (User -> Student):\n";
+  
 
     User* userPtr = new Student("GEU101", "Rahul", 200);
     cout << "Created user via User* base pointer:\n";
@@ -27,7 +27,7 @@ void demonstrateOOP() {
     cout << "Role identified dynamically via getRole(): " << userPtr->getRole() << "\n";
 
     // 2. ENCAPSULATION
-    cout << "\n[B] ENCAPSULATION (Controlled Balance Access):\n";
+   
     Student student("GEU101", "Rahul", 200);
     cout << "Initial balance: ₹" << student.getBalance() << "\n";
     cout << "Attempting to deduct ₹300 (exceeds balance):\n";
@@ -55,7 +55,7 @@ void demonstrateOOP() {
     cout << "Total Amount: ₹" << order.getTotalAmount() << "\n";
 
     // 4. ABSTRACTION & POLYMORPHISM (Storage Interface)
-    cout << "\n[D] ABSTRACTION & POLYMORPHISM (BaseStorage Interface):\n";
+  
   
     BaseStorage* storage = new Storage();
     bool saved = storage->saveStudent("GEU101", "Rahul", student.getBalance());
@@ -70,7 +70,7 @@ void demonstrateDSA() {
  
 
     // 1. HASH MAP (std::unordered_map) - O(1) Fast Lookup
-    cout << "\n[A] HASH MAP (std::unordered_map) - O(1) Average Lookup:\n";
+  
     unordered_map<string, int> menuPriceMap;
     menuPriceMap["M001"] = 69;   // Campus Burger
     menuPriceMap["M002"] = 99;   // Cheese Pizza
@@ -85,7 +85,7 @@ void demonstrateDSA() {
     }
 
     // 2. QUEUE (std::queue) - FIFO Order Processing
-    cout << "\n[B] QUEUE (std::queue) - FIFO (First-In, First-Out) Order Processing:\n";
+   
     queue<string> kitchenQueue;
     kitchenQueue.push("ORD1001 (Table 1)"); // Enqueue 1
     kitchenQueue.push("ORD1002 (Table 3)"); // Enqueue 2
@@ -96,16 +96,15 @@ void demonstrateDSA() {
         cout << "  Kitchen cooking next order: " << kitchenQueue.front() << "\n";
         kitchenQueue.pop(); // Dequeue oldest order
     }
-    cout << "All queued orders processed in exact FIFO order.\n";
+  
 
     // 3. STL ACCUMULATE (std::accumulate) - Summing Order Total
-    cout << "\n[C] STL ACCUMULATE (std::accumulate) - Total Price Calculation:\n";
+
     vector<int> itemSubtotals = {69, 45, 50}; // 69 + 45 + 50
     int total = accumulate(itemSubtotals.begin(), itemSubtotals.end(), 0);
     cout << "Calculated total from item subtotals using std::accumulate: ₹" << total << "\n";
 
     // 4. SORTING (std::sort) - O(N log N)
-    cout << "\n[D] SORTING (std::sort) - Menu Items by Price:\n";
     vector<pair<string, int>> items = {
         {"Cheese Pizza", 99},
         {"Cold Coffee", 45},
@@ -146,6 +145,6 @@ int main() {
         cout << "  " << rec << "\n";
     }
 
-    cout << "\n[SUCCESS] All OOP and DSA concepts executed successfully!\n\n";
+  
     return 0;
 }

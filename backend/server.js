@@ -31,7 +31,7 @@ function getLocalIp() {
     const interfaces = os.networkInterfaces();
     for (const name of Object.keys(interfaces)) {
         for (const net of interfaces[name]) {
-            // Skip over internal (i.e. 127.0.0.1) and non-ipv4 addresses
+         
             if (net.family === 'IPv4' && !net.internal) {
                 return net.address;
             }
@@ -107,9 +107,9 @@ app.get('/api/health', (req, res) => {
 
 app.listen(PORT, HOST, () => {
     const currentIp = getLocalIp();
-    console.log(`\n==================================================`);
+  
     console.log(`SmartCanteen Server Online`);
     console.log(`Local Access  : http://localhost:${PORT}`);
     console.log(`Network Access: http://${currentIp}:${PORT}`);
-    console.log(`==================================================\n`);
+  
 });
