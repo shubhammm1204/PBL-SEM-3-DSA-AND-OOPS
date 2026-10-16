@@ -16,9 +16,7 @@ using namespace std;
 
 
 void demonstrateOOP() {
-    cout << "\n======================================================\n";
-    cout << "          1. OBJECT-ORIENTED PROGRAMMING (OOP)        \n";
-    cout << "======================================================\n";
+  
 
     // 1. INHERITANCE & POLYMORPHISM
     cout << "\n[A] INHERITANCE & POLYMORPHISM (User -> Student):\n";
