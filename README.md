@@ -183,3 +183,16 @@ If you find this project useful for learning, feel free to explore the repositor
   <br/>
   <i>Semester 3 — Project-Based Learning</i>
 </p>
+
+
+## Campus Bites Admin Portal
+
+The admin UI is available at `frontend/admin.html` when the Express server is running. It is currently a frontend prototype using sample data. See [`docs/PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md) and [`docs/ADMIN_PORTAL_INTEGRATION.md`](docs/ADMIN_PORTAL_INTEGRATION.md) for the folder layout and integration status.
+
+
+## Supabase admin setup
+See [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) for local admin authentication, token recharge, database setup, and current menu-sync limitations.
+
+
+## Authentication and live admin menu
+See `docs/AUTH_AND_LIVE_MENU.md` for the student login/signup flow, separate admin URL, Supabase SQL setup, and live menu synchronization.

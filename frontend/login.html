@@ -1,36 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="logincss.css">
-</head>
-<body> 
-    <div class="login-container">
-        <h1 class="Welcome-heading">Welcome To Campus Bites</h1>
-    </div>
-        <div class="login-box">
-            
-            <h1>Login</h1>
-            <form action="">
-                <div class="form">
-                    <input type="text" required>
-                    <label for="">Student ID</label>
-            </div>
-        </form>
-        <div class="form">
-            <input type="password" required>
-            <label for="">Password</label>
-        </div>
-        <p>
-            <input type="checkbox">Remember Me <a href="#">Forget Password</a>
-        </p>
-        <input type="button" value="Login"id="btn">
-        <p>Dont have an Account?
-            <a href="#">Register Now</a>
-        </p>
-    </div>
-    
-</body>
-</html>
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Campus Bites | Login</title><link rel="stylesheet" href="logincss.css"><style>
+.auth-links{margin-top:18px;text-align:center;font-size:14px}.auth-links a{color:#d87513;font-weight:700}.auth-message{min-height:22px;font-size:13px;color:#b33}.login-box form .form{margin:18px 0}.login-box input[type=email],.login-box input[type=password]{width:100%}#btn{cursor:pointer}.auth-note{font-size:12px;color:#777;margin-top:12px}
+</style></head><body><div class="login-container"><h1 class="Welcome-heading">Welcome To Campus Bites</h1></div><div class="login-box"><h1>Login</h1><form id="login-form"><div class="form"><input id="email" type="email" autocomplete="username" required><label for="email">Email address</label></div><div class="form"><input id="password" type="password" autocomplete="current-password" required><label for="password">Password</label></div><p id="auth-message" class="auth-message" role="status"></p><input type="submit" value="Login" id="btn"></form><div class="auth-links">Don't have an account? <a href="signup.html">Register now</a></div><p class="auth-note">Campus Bites students sign in with their registered college email.</p></div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script><script src="js/supabase-config.js"></script><script src="js/supabase.js"></script><script>
+(async()=>{const sb=window.cbSupabase;if(!sb)return;const {data:{session}}=await sb.auth.getSession();if(session){const r=await fetch('/api/auth/me',{headers:{Authorization:'Bearer '+session.access_token}});if(r.ok){const p=await r.json();location.replace(p.role==='admin'?'/admin':'/dashboard');}}})();
+document.querySelector('#login-form').addEventListener('submit',async e=>{e.preventDefault();const msg=document.querySelector('#auth-message'),btn=document.querySelector('#btn');btn.disabled=true;msg.textContent='Signing in…';try{const {data,error}=await window.cbSupabase.auth.signInWithPassword({email:document.querySelector('#email').value.trim(),password:document.querySelector('#password').value});if(error)throw error;const r=await fetch('/api/auth/me',{headers:{Authorization:'Bearer '+data.session.access_token}});const p=await r.json();if(!r.ok)throw new Error(p.error||'Could not load account');location.replace(p.role==='admin'?'/admin':'/dashboard');}catch(err){msg.textContent=err.message||'Login failed';}finally{btn.disabled=false;}});
+</script></body></html>

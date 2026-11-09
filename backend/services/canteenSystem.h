@@ -13,6 +13,7 @@
 #include <algorithm>     // DSA Concept: std::sort
 #include <sstream>
 #include <iostream>
+#include <fstream>
 
 using namespace std;
 
@@ -55,6 +56,35 @@ private:
         menuMap["M023"] = MenuItem("M023", "Fried Momos", "Snacks", 65);
         menuMap["M024"] = MenuItem("M024", "Cheese Sandwich", "Snacks", 55);
         menuMap["M025"] = MenuItem("M025", "Paneer Wrap", "Snacks", 79);
+
+        // If the admin has changed the menu, use the latest menu snapshot written by Node.js.
+        // The existing order-processing logic below continues to validate IDs and prices in menuMap.
+        const string menuPath = "backend/data/menu.txt";
+        ifstream menuFile(menuPath.c_str());
+        if (menuFile.is_open())
+        {
+            unordered_map<string, MenuItem> updatedMenu;
+            string line;
+            while (getline(menuFile, line))
+            {
+                stringstream ss(line);
+                string id, name, category, priceText, availableText;
+                if (getline(ss, id, '|') && getline(ss, name, '|') &&
+                    getline(ss, category, '|') && getline(ss, priceText, '|') &&
+                    getline(ss, availableText, '|'))
+                {
+                    int price = atoi(priceText.c_str());
+                    bool available = (availableText == "1" || availableText == "true");
+                    if (!id.empty() && !name.empty() && price > 0)
+                    {
+                        MenuItem item(id, name, category, price);
+                        item.setAvailable(available);
+                        updatedMenu[id] = item;
+                    }
+                }
+            }
+            if (!updatedMenu.empty()) menuMap.swap(updatedMenu);
+        }
     }
 
     // Load students from storage file into Hash Map (O(1) access)
@@ -178,7 +208,7 @@ public:
                 continue;
 
             auto mIt = menuMap.find(itemId);
-            if (mIt != menuMap.end())
+            if (mIt != menuMap.end() && mIt->second.isAvailable())
             {
                 int price = mIt->second.getPrice();
                 string name = mIt->second.getName();
@@ -187,7 +217,7 @@ public:
             }
             else
             {
-                res.message = "Unknown menu item: " + itemId;
+                res.message = (mIt == menuMap.end()) ? "Unknown menu item: " + itemId : "This menu item is currently unavailable: " + itemId;
                 return res;
             }
         }

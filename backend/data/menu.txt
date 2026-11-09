@@ -1,0 +1,21 @@
+M001|Campus Burger|Burgers|69|1|🍽️
+M002|Cheese Pizza|Pizza|99|1|🍽️
+M003|Masala Noodles|Noodles|50|1|🍽️
+M004|French Fries|Snacks|49|1|🍽️
+M005|Cold Coffee|Drinks|45|1|🍽️
+M006|Chocolate Brownie|Desserts|55|1|🍽️
+M017|Aloo Tikki Burger|Burgers|49|1|🍽️
+M018|Double Cheese Burger|Burgers|89|1|🍽️
+M019|Farmhouse Pizza|Pizza|129|1|🍽️
+M020|Paneer Pizza|Pizza|139|1|🍽️
+M021|Schezwan Noodles|Noodles|70|1|🍽️
+M022|Veg Momos|Snacks|50|1|🍽️
+M023|Fried Momos|Snacks|65|1|🍽️
+M024|Cheese Sandwich|Snacks|55|1|🍽️
+M025|Paneer Wrap|Snacks|79|1|🍽️
+M026|Peri Peri Fries|Snacks|59|1|🍽️
+M027|Mango Shake|Drinks|60|1|🍽️
+M028|Oreo Shake|Drinks|75|1|🍽️
+M029|Hot Coffee|Drinks|25|1|🍽️
+M030|Gulab Jamun|Desserts|35|1|🍽️
+M031|Chocolate Waffle|Desserts|69|1|🍽️

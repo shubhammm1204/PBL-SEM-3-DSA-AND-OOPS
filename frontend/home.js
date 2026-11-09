@@ -4,7 +4,9 @@
 const API_URL = (window.location.port && window.location.port !== "5500")
   ? window.location.origin
   : `http://${window.location.hostname || "localhost"}:5000`;
-const STUDENT_ID = "GEU101";
+let STUDENT_ID = "";
+let CURRENT_PROFILE = null;
+const supabaseClient = window.cbSupabase;
 
 const cart = new Map();
 
@@ -74,8 +76,10 @@ async function checkBackend() {
 // Fetch the student's real balance.
 async function loadBalance() {
   try {
+    const { data: { session } } = await supabaseClient.auth.getSession();
     const response = await fetch(
-      `${API_URL}/api/students/${encodeURIComponent(STUDENT_ID)}`
+      `${API_URL}/api/students/${encodeURIComponent(STUDENT_ID)}`,
+      { headers: { Authorization: `Bearer ${session.access_token}` } }
     );
 
     const data = await response.json();
@@ -122,42 +126,38 @@ document.addEventListener("keydown", (event) => {
   }
 });
 
-// Add items from the menu to the cart.
-document.querySelectorAll(".food-card .add-cart").forEach((button) => {
-  button.addEventListener("click", () => {
-    const card = button.closest(".food-card");
-
-    const id = card.dataset.itemId;
-    const name = card.dataset.name;
-    const price = Number(card.dataset.price);
-
-    if (
-      !id ||
-      !name ||
-      !Number.isSafeInteger(price) ||
-      price <= 0
-    ) {
-      showCartMessage("This food item has invalid details.", "error");
-      openCart();
-      return;
-    }
-
-    const existingItem = cart.get(id);
-
-    if (existingItem) {
-      existingItem.quantity += 1;
-    } else {
-      cart.set(id, {
-        id,
-        name,
-        price,
-        quantity: 1,
-      });
-    }
-
-    renderCart();
-    showCartMessage(`${name} added to cart.`, "success");
-  });
+// Load the live menu catalogue. Admin edits are reflected here and the same
+// snapshot is used by the C++ order validator for authoritative prices.
+const studentMenu = document.getElementById("student-menu");
+async function loadLiveMenu() {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  const response = await fetch(`${API_URL}/api/menu`, { headers: { Authorization: `Bearer ${session.access_token}` } });
+  const items = await response.json();
+  if (!response.ok) throw new Error(items.error || "Could not load menu");
+  studentMenu.replaceChildren();
+  for (const item of items.filter(m => m.available)) {
+    const card = document.createElement("article");
+    card.className = "food-card"; card.dataset.itemId = item.id; card.dataset.name = item.name; card.dataset.price = item.price;
+    const image = document.createElement("div"); image.className = "food-image";
+    const icon = document.createElement("span"); icon.textContent = item.emoji || "🍽️"; icon.style.cssText = "font-size:54px;display:grid;place-items:center;width:100%;height:100%"; image.appendChild(icon);
+    const info = document.createElement("div"); info.className = "food-info";
+    const category = document.createElement("span"); category.className = "food-category"; category.textContent = item.category;
+    const title = document.createElement("h3"); title.textContent = item.name;
+    const desc = document.createElement("p"); desc.textContent = "Freshly prepared at Campus Bites.";
+    const bottom = document.createElement("div"); bottom.className = "food-bottom";
+    const price = document.createElement("span"); price.className = "price"; price.textContent = `₹${item.price}`;
+    const add = document.createElement("button"); add.className = "add-cart"; add.type = "button"; add.innerHTML = '<i class="fa-solid fa-cart-plus"></i> Add';
+    bottom.append(price, add); info.append(category, title, desc, bottom); card.append(image, info); studentMenu.appendChild(card);
+  }
+}
+studentMenu.addEventListener("click", event => {
+  const button = event.target.closest(".add-cart"); if (!button) return;
+  const card = button.closest(".food-card");
+  const id = card.dataset.itemId, name = card.dataset.name, price = Number(card.dataset.price);
+  if (!id || !name || !Number.isSafeInteger(price) || price <= 0) { showCartMessage("This food item has invalid details.", "error"); openCart(); return; }
+  const existing = cart.get(id);
+  if (existing) existing.quantity += 1; else cart.set(id, { id, name, price, quantity: 1 });
+  renderCart(); showCartMessage(`${name} added to cart.`, "success");
 });
 
 // Update quantities and calculate totals.
@@ -275,6 +275,7 @@ placeOrderButton.addEventListener("click", async () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        "Authorization": `Bearer ${(await supabaseClient.auth.getSession()).data.session.access_token}`,
       },
       body: JSON.stringify(order),
     });
@@ -315,8 +316,22 @@ document.getElementById("view-tokens").addEventListener("click", () => {
   });
 });
 
-// Initialize the page.
-initTableSync();
-renderCart();
-checkBackend();
-loadBalance();
+// Protect the student dashboard and bind it to the signed-in college account.
+async function initializeStudentDashboard() {
+  try {
+    const { data: { session } } = await supabaseClient.auth.getSession();
+    if (!session) { location.replace("/login"); return; }
+    const response = await fetch(`${API_URL}/api/auth/me`, { headers: { Authorization: `Bearer ${session.access_token}` } });
+    const profile = await response.json();
+    if (!response.ok) throw new Error(profile.error || "Account verification failed");
+    if (profile.role === "admin") { location.replace("/admin"); return; }
+    if (profile.role !== "student") throw new Error("This dashboard is for student accounts.");
+    CURRENT_PROFILE = profile; STUDENT_ID = profile.collegeId;
+    document.body.style.visibility = "visible";
+    const logout = document.getElementById("student-logout");
+    if (logout) logout.addEventListener("click", async () => { await supabaseClient.auth.signOut(); location.replace("/login"); });
+    initTableSync(); renderCart(); checkBackend();
+    await loadLiveMenu(); await loadBalance();
+  } catch (error) { console.error(error); alert(error.message); await supabaseClient.auth.signOut(); location.replace("/login"); }
+}
+initializeStudentDashboard();

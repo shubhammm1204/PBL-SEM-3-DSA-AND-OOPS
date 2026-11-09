@@ -13,6 +13,7 @@
     />
     <link rel="stylesheet" href="home.css" />
     <style>
+      body { visibility: hidden; }
       /* Table Badge Pill in Navbar */
       .table-badge-pill {
         display: inline-flex;
@@ -92,7 +93,7 @@
             <span id="cart-count">0</span>
           </button>
 
-          <a href="login.html" class="login">Login</a>
+          <button type="button" class="login" id="student-logout">Logout</button>
         </div>
       </nav>
     </header>
@@ -164,7 +165,7 @@
           <span>Everyone's favourite food on campus.</span>
         </div>
 
-        <div class="food-container">
+        <div class="food-container" id="student-menu">
           <article
             class="food-card"
             data-item-id="M001"
@@ -780,6 +781,9 @@
       </div>
     </aside>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="js/supabase-config.js"></script>
+    <script src="js/supabase.js"></script>
     <script src="home.js"></script>
   </body>
 </html>

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light">
+  <title>Campus Bites | Admin Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#">
+        <span class="brand-mark">CB</span>
+        <span><strong>Campus Bites</strong><small>ADMIN CONSOLE</small></span>
+      </a>
+
+      <div class="sidebar-label">WORKSPACE</div>
+      <nav class="side-nav" aria-label="Admin navigation">
+        <button class="nav-item active" data-page="overview"><span class="nav-icon">▦</span>Overview</button>
+        <button class="nav-item" data-page="orders"><span class="nav-icon">▤</span>Orders <b class="nav-count" id="pending-nav-count">4</b></button>
+        <button class="nav-item" data-page="menu"><span class="nav-icon">☷</span>Menu management</button>
+        <button class="nav-item" data-page="inventory"><span class="nav-icon">▣</span>Inventory</button>
+        <button class="nav-item" data-page="customers"><span class="nav-icon">♙</span>Customers</button>
+        <button class="nav-item" data-page="tokens"><span class="nav-icon">◈</span>Token recharge</button>
+        <button class="nav-item" data-page="reports"><span class="nav-icon">▥</span>Reports</button>
+      </nav>
+
+      <div class="sidebar-label tools-label">PREFERENCES</div>
+      <nav class="side-nav">
+        <button class="nav-item" data-page="settings"><span class="nav-icon">⚙</span>Settings</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">?</div>
+          <strong>Need a hand?</strong>
+          <p>Check your canteen operations guide.</p>
+          <a href="#" id="help-link">View guide <span>↗</span></a>
+        </div>
+
+        <div class="admin-profile">
+          <div class="avatar">AD</div>
+          <div class="profile-copy">
+            <strong>Admin User</strong>
+            <small>Super administrator</small>
+          </div>
+        </div>
+
+        <button type="button" id="admin-signout" class="logout-btn">
+          <span class="logout-icon">↪</span>
+          <span>Logout</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="icon-button menu-toggle" id="menu-toggle" aria-label="Toggle menu">☰</button>
+          <div class="breadcrumb"><span>Campus Bites</span><i>/</i><strong id="breadcrumb-current">Overview</strong></div>
+        </div>
+        <div class="topbar-right">
+          <span class="open-status"><i></i> Canteen is open</span>
+          <button class="icon-button notification-button" aria-label="Notifications">♧<em></em></button>
+          <div class="top-avatar">AD</div>
+        </div>
+      </header>
+
+      <div class="content">
+        <section class="page-section active" id="page-overview">
+          <div class="page-heading">
+            <div><p class="eyebrow">SATURDAY, 07 NOVEMBER 2026</p><h1>Good afternoon, Admin <span>✦</span></h1><p class="subheading">Here's what's happening at your canteen today.</p></div>
+            <button class="primary-button" id="download-report"><span>↓</span> Export report</button>
+          </div>
+
+          <div class="stats-grid">
+            <article class="stat-card"><div class="stat-top"><span>Total revenue</span><span class="stat-icon orange">₹</span></div><strong>₹24,580</strong><div class="stat-foot"><span class="trend up">↗ 12.8%</span><span>vs. last week</span></div><div class="sparkline spark-one"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Total orders</span><span class="stat-icon peach">▤</span></div><strong>186</strong><div class="stat-foot"><span class="trend up">↗ 8.2%</span><span>vs. last week</span></div><div class="sparkline spark-two"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Active customers</span><span class="stat-icon green">♙</span></div><strong>124</strong><div class="stat-foot"><span class="trend up">↗ 5.4%</span><span>vs. last week</span></div><div class="sparkline spark-three"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+            <article class="stat-card"><div class="stat-top"><span>Pending orders</span><span class="stat-icon yellow">◷</span></div><strong id="pending-stat">4</strong><div class="stat-foot"><span class="trend neutral">Needs attention</span><span>right now</span></div><div class="sparkline spark-four"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+          </div>
+
+          <div class="dashboard-grid">
+            <article class="panel revenue-panel">
+              <div class="panel-heading"><div><h2>Revenue overview</h2><p>Track your canteen's earnings</p></div><select id="revenue-range" class="select-control"><option>This week</option><option>This month</option><option>This year</option></select></div>
+              <div class="chart-summary"><strong>₹24,580</strong><span class="trend up">↗ 12.8%</span><small>Compared to previous period</small></div>
+              <div class="chart-wrap">
+                <div class="y-labels"><span>₹8k</span><span>₹6k</span><span>₹4k</span><span>₹2k</span><span>₹0</span></div>
+                <div class="chart" aria-label="Illustrative weekly revenue chart">
+                  <div class="grid-lines"><i></i><i></i><i></i><i></i><i></i></div>
+                  <svg viewBox="0 0 700 190" preserveAspectRatio="none" role="img" aria-label="Revenue rises through the week">
+                    <defs><linearGradient id="areaFill" x1="0" x2="0" y1="0" y2="1"><stop offset="0%" stop-color="#ed821b" stop-opacity=".22"/><stop offset="100%" stop-color="#ed821b" stop-opacity="0"/></linearGradient></defs>
+                    <path d="M0 145 C45 137 55 112 100 121 S165 142 200 102 S260 112 300 84 S365 104 400 73 S470 93 500 55 S570 70 600 43 S660 54 700 18 L700 190 L0 190Z" fill="url(#areaFill)"/>
+                    <path d="M0 145 C45 137 55 112 100 121 S165 142 200 102 S260 112 300 84 S365 104 400 73 S470 93 500 55 S570 70 600 43 S660 54 700 18" fill="none" stroke="#ed821b" stroke-width="3" stroke-linecap="round"/>
+                    <circle cx="700" cy="18" r="5" fill="#fff" stroke="#ed821b" stroke-width="3"/>
+                  </svg>
+                  <div class="x-labels"><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span></div>
+                </div>
+              </div>
+            </article>
+
+            <article class="panel popular-panel">
+              <div class="panel-heading"><div><h2>Popular items</h2><p>Your best-selling dishes</p></div><button class="text-button" data-go="menu">View menu ↗</button></div>
+              <div class="popular-list">
+                <div class="popular-item"><div class="food-thumb burger">🍔</div><div class="popular-copy"><strong>Classic Burger</strong><small>Fast food</small></div><div class="popular-sales"><strong>86</strong><small>sold</small></div></div>
+                <div class="popular-item"><div class="food-thumb pizza">🍕</div><div class="popular-copy"><strong>Farmhouse Pizza</strong><small>Fast food</small></div><div class="popular-sales"><strong>64</strong><small>sold</small></div></div>
+                <div class="popular-item"><div class="food-thumb sandwich">🥪</div><div class="popular-copy"><strong>Grilled Sandwich</strong><small>Snacks</small></div><div class="popular-sales"><strong>52</strong><small>sold</small></div></div>
+                <div class="popular-item"><div class="food-thumb coffee">☕</div><div class="popular-copy"><strong>Cold Coffee</strong><small>Beverages</small></div><div class="popular-sales"><strong>41</strong><small>sold</small></div></div>
+              </div>
+            </article>
+          </div>
+
+          <article class="panel orders-panel">
+            <div class="panel-heading"><div><h2>Recent orders</h2><p>Keep an eye on the latest activity</p></div><button class="text-button" data-go="orders">View all orders ↗</button></div>
+            <div class="table-scroll"><table><thead><tr><th>ORDER ID</th><th>CUSTOMER</th><th>ITEMS</th><th>TABLE</th><th>AMOUNT</th><th>STATUS</th><th></th></tr></thead><tbody id="recent-orders-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="page-section" id="page-orders">
+          <div class="page-heading"><div><p class="eyebrow">ORDER OPERATIONS</p><h1>Orders</h1><p class="subheading">Review incoming orders and update their progress.</p></div><button class="outline-button" id="refresh-orders">↻ Refresh</button></div>
+          <article class="panel">
+            <div class="toolbar"><div class="tabs" id="order-tabs"><button class="tab active" data-filter="All">All orders <span id="all-order-count">6</span></button><button class="tab" data-filter="Pending">Pending</button><button class="tab" data-filter="Preparing">Preparing</button><button class="tab" data-filter="Ready">Ready</button><button class="tab" data-filter="Completed">Completed</button></div><input class="search-input" id="order-search" placeholder="⌕  Search order or customer"></div>
+            <div class="table-scroll"><table><thead><tr><th>ORDER ID</th><th>CUSTOMER</th><th>ITEMS</th><th>TABLE</th><th>AMOUNT</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="orders-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="page-section" id="page-menu">
+          <div class="page-heading"><div><p class="eyebrow">FOOD CATALOGUE</p><h1>Menu management</h1><p class="subheading">Add dishes, update prices and control availability.</p></div><button class="primary-button" id="add-item-button">＋ Add menu item</button></div>
+          <article class="panel">
+            <div class="toolbar"><div class="tabs" id="menu-tabs"><button class="tab active" data-category="All">All items</button><button class="tab" data-category="Burgers">Burgers</button><button class="tab" data-category="Pizza">Pizza</button><button class="tab" data-category="Noodles">Noodles</button><button class="tab" data-category="Snacks">Snacks</button><button class="tab" data-category="Drinks">Drinks</button><button class="tab" data-category="Desserts">Desserts</button></div><input class="search-input" id="menu-search" placeholder="⌕  Search menu"></div>
+            <div class="menu-grid" id="menu-grid"></div>
+          </article>
+        </section>
+
+        <section class="page-section" id="page-tokens">
+          <div class="page-heading"><div><p class="eyebrow">CAMPUS WALLET</p><h1>Token recharge</h1><p class="subheading">Find a student or faculty member by College ID and credit tokens to their account.</p></div></div>
+          <div class="token-layout">
+            <article class="panel recharge-panel">
+              <div class="panel-heading"><div><h2>Recharge an account</h2><p>Search the registered campus member before adding tokens.</p></div><span class="token-symbol">◈</span></div>
+              <form id="token-search-form" class="token-search-form">
+                <label for="college-id-input">COLLEGE ID</label>
+                <div class="token-search-row"><input id="college-id-input" autocomplete="off" placeholder="e.g. GEU101 or FAC201" required><button class="primary-button" type="submit">Find account</button></div>
+                <small class="form-hint">Use the exact College ID registered in your canteen system.</small>
+              </form>
+              <div id="token-member-card" class="member-result" hidden>
+                <div class="member-result-top"><div class="member-avatar" id="member-avatar">AS</div><div class="member-details"><strong id="member-name">Aarav Sharma</strong><small><span id="member-role">Student</span> · <span id="member-college-id">GEU101</span></small></div><span class="status ready">Account found</span></div>
+                <div class="balance-strip"><span>Current token balance</span><strong><b id="member-balance">120</b> <small>tokens</small></strong></div>
+                <form id="token-recharge-form">
+                  <label for="token-amount">TOKENS TO ADD</label>
+                  <input id="token-amount" type="number" min="1" step="1" placeholder="Enter token amount" required>
+                  <label for="recharge-note">REASON / NOTE <span class="optional-label">OPTIONAL</span></label>
+                  <input id="recharge-note" maxlength="100" placeholder="e.g. Monthly allowance">
+                  <button class="primary-button recharge-submit" type="submit">＋ Confirm token recharge</button>
+                </form>
+              </div>
+              <div id="token-empty-state" class="token-empty-state"><span>◈</span><strong>Account details will appear here</strong><p>Enter a College ID above to look up the account and current token balance.</p></div>
+            </article>
+            <article class="panel token-guidance"><p class="eyebrow">ADMIN NOTE</p><h2>Manual token credits</h2><p>Use this tool when a student or faculty member needs tokens added to their Campus Bites account.</p><ul><li>Always verify the College ID and displayed name.</li><li>Enter a positive whole number of tokens.</li><li>Each successful recharge is added to the transaction history.</li></ul><div class="demo-warning"><strong>Live local balance</strong><span>Accounts are looked up in the existing canteen student records. Recharges update that balance file and write an audit record to Supabase.</span></div></article>
+          </div>
+          <article class="panel token-history-panel"><div class="panel-heading"><div><h2>Recharge history</h2><p>Recent manual token credits made from this admin portal.</p></div><span class="soft-pill" id="recharge-count">0 transactions</span></div><div class="table-scroll"><table><thead><tr><th>DATE & TIME</th><th>COLLEGE ID</th><th>MEMBER</th><th>ROLE</th><th>TOKENS ADDED</th><th>NOTE</th></tr></thead><tbody id="recharge-history-body"><tr><td colspan="6" class="empty-history">No recharge transactions yet.</td></tr></tbody></table></div></article>
+        </section>
+
+        <section class="page-section" id="page-inventory">
+          <div class="page-heading"><div><p class="eyebrow">STOCK CONTROL</p><h1>Inventory</h1><p class="subheading">Monitor availability of ingredients and popular items.</p></div><button class="primary-button" id="add-stock-button">＋ Add stock item</button></div>
+          <article class="panel"><div class="panel-heading"><div><h2>Stock overview</h2><p>Sample inventory for the local UI prototype</p></div><span class="soft-pill">4 items need attention</span></div>
+            <div class="table-scroll"><table><thead><tr><th>ITEM</th><th>SKU</th><th>AVAILABLE</th><th>REORDER LEVEL</th><th>STATUS</th><th>ACTION</th></tr></thead><tbody id="inventory-body"></tbody></table></div>
+          </article>
+        </section>
+
+        <section class="page-section" id="page-customers">
+          <div class="page-heading"><div><p class="eyebrow">COMMUNITY</p><h1>Customers</h1><p class="subheading">A snapshot of students using Campus Bites.</p></div><button class="outline-button" id="customer-export">↓ Export customers</button></div>
+          <article class="panel"><div class="toolbar"><div><h2 class="inline-heading">Registered students</h2><p class="panel-subtitle">Demo records for layout preview</p></div><input class="search-input" id="customer-search" placeholder="⌕  Search student"></div><div class="table-scroll"><table><thead><tr><th>STUDENT</th><th>STUDENT ID</th><th>EMAIL</th><th>ORDERS</th><th>TOTAL SPENT</th><th>STATUS</th></tr></thead><tbody id="customers-body"></tbody></table></div></article>
+        </section>
+
+        <section class="page-section" id="page-reports">
+          <div class="page-heading"><div><p class="eyebrow">BUSINESS INSIGHTS</p><h1>Reports</h1><p class="subheading">Understand sales trends and canteen performance.</p></div><button class="primary-button" id="reports-export">↓ Export report</button></div>
+          <div class="stats-grid report-stats"><article class="stat-card"><div class="stat-top"><span>Average order value</span><span class="stat-icon orange">₹</span></div><strong>₹132.15</strong><div class="stat-foot"><span class="trend up">↗ 4.6%</span><span>this week</span></div></article><article class="stat-card"><div class="stat-top"><span>Completion rate</span><span class="stat-icon green">✓</span></div><strong>96.2%</strong><div class="stat-foot"><span class="trend up">↗ 2.1%</span><span>this week</span></div></article><article class="stat-card"><div class="stat-top"><span>Best day</span><span class="stat-icon yellow">✦</span></div><strong>Friday</strong><div class="stat-foot"><span>₹5,840 revenue</span></div></article><article class="stat-card"><div class="stat-top"><span>Top category</span><span class="stat-icon peach">♨</span></div><strong>Fast food</strong><div class="stat-foot"><span>42% of orders</span></div></article></div>
+          <article class="panel report-panel"><div class="panel-heading"><div><h2>Weekly performance</h2><p>Illustrative revenue breakdown</p></div><span class="soft-pill">Last 7 days</span></div><div class="bar-chart"><div class="bar-column"><span>₹2.1k</span><i style="height:38%"></i><small>Mon</small></div><div class="bar-column"><span>₹3.4k</span><i style="height:60%"></i><small>Tue</small></div><div class="bar-column"><span>₹2.8k</span><i style="height:49%"></i><small>Wed</small></div><div class="bar-column"><span>₹4.2k</span><i style="height:75%"></i><small>Thu</small></div><div class="bar-column"><span>₹5.8k</span><i style="height:100%"></i><small>Fri</small></div><div class="bar-column"><span>₹4.6k</span><i style="height:82%"></i><small>Sat</small></div><div class="bar-column"><span>₹1.6k</span><i style="height:29%"></i><small>Sun</small></div></div></article>
+        </section>
+
+        <section class="page-section" id="page-settings">
+          <div class="page-heading"><div><p class="eyebrow">CONFIGURATION</p><h1>Settings</h1><p class="subheading">Manage basic canteen preferences.</p></div></div>
+          <article class="panel settings-panel"><h2>Canteen profile</h2><p class="panel-subtitle">These controls are visual placeholders in this UI prototype.</p><label>Canteen name<input value="Campus Bites"></label><label>Contact email<input value="admin@campusbites.local"></label><label>Opening time<input value="09:00 AM"></label><label>Closing time<input value="05:00 PM"></label><label class="toggle-row">Accepting orders <input type="checkbox" checked></label><button class="primary-button" id="save-settings">Save changes</button></article>
+        </section>
+      </div>
+      <footer class="footer"><span>© 2026 Campus Bites</span><span>Made for your campus <b>♥</b></span></footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="item-modal" aria-hidden="true">
+    <form class="modal" id="item-form">
+      <div class="modal-heading"><div><p class="eyebrow">MENU CATALOGUE</p><h2>Add menu item</h2></div><button type="button" class="modal-close" id="close-modal">×</button></div>
+      <label>Item name<input id="item-name" required placeholder="e.g. Paneer Wrap"></label>
+      <div class="form-row"><label>Price (₹)<input id="item-price" type="number" min="1" required placeholder="99"></label><label>Category<select id="item-category"><option>Fast food</option><option>Snacks</option><option>Beverages</option></select></label></div>
+      <label>Emoji / icon<input id="item-emoji" maxlength="4" placeholder="🥙" value="🍽️"></label>
+      <div class="modal-actions"><button type="button" class="outline-button" id="cancel-modal">Cancel</button><button class="primary-button" type="submit">Add item</button></div>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="js/supabase-config.js"></script>
+  <script src="js/supabase.js"></script>
+  <script src="js/admin-auth.js"></script>
+  <script src="js/admin-api.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>
