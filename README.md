@@ -1,198 +1,215 @@
-# 🚀 Project-Based Learning (PBL) — Semester 3
-### Data Structures & Algorithms (DSA) + Object-Oriented Programming (OOP)
+# 🍽️ Campus Bites | Smart Canteen Management System
 
-<p align="center">
-  <b>A Collaborative Group Project | B.Tech CSE</b>
-</p>
+A Smart Canteen Management System developed as part of the Semester 3 Project-Based Learning (PBL) program. The project aims to digitize traditional canteen operations through an interactive web application with user authentication, order management, and an admin portal.
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Project-SMART CANTEEN -blue?style=for-the-badge" alt="SMART CANTEEN Project"/>
-  <img src="https://img.shields.io/badge/Semester-3-orange?style=for-the-badge" alt="Semester 3"/>
-  <img src="https://img.shields.io/badge/Team-Collaboration-green?style=for-the-badge" alt="Team Collaboration"/>
-  <img src="https://img.shields.io/badge/Status-In%20Development-yellow?style=for-the-badge" alt="Project Status"/>
-</p>
+## 🚀 Project Overview
 
----
+Campus Bites is a web-based canteen management platform designed to simplify food ordering and canteen administration.
 
-## 📌 About the Project
+The application combines frontend and backend technologies with Data Structures and Algorithms (DSA) and Object-Oriented Programming (OOP) concepts to provide an organized and efficient canteen management experience.
 
-Welcome to our **Semester 3 PBl Smart Canteen project**, developed collaboratively as part of our academic curriculum.
+## ✨ Key Features
 
-This project focuses on applying concepts from **Data Structures & Algorithms (DSA)** and **Object-Oriented Programming (OOP)** to software development. It is an opportunity for our team to transform theoretical knowledge into practical implementation while learning how to design, develop, test, and maintain a software project together.
+### 🔐 Authentication System
+- User login and signup functionality.
+- Supabase Authentication integration.
+- Authentication-based user sessions.
+- Secure credential handling through Supabase.
 
-The repository contains separate `frontend` and `backend` directories, providing an organized structure for the application's interface and server-side code.
+### 👨‍💼 Admin Portal
+- Dedicated admin login interface.
+- Centralized administration interface.
+- Management of canteen operations.
 
-## 🎯 Objectives
+### 🍔 Canteen Management
+- Digital food menu.
+- Food ordering functionality.
+- Order processing and management.
+- Transaction and menu data management.
 
-- Apply data structures and algorithmic problem-solving techniques.
-- Understand and implement object-oriented programming principles.
-- Practice modular and maintainable software development.
-- Understand the interaction between frontend and backend components.
-- Develop teamwork, communication, debugging, and version-control skills.
-- Gain practical experience with collaborative development using Git and GitHub.
-
-## 🧠 Concepts Covered
-
-### Data Structures & Algorithms
-- Arrays and strings
-- Searching and sorting
-- Linked lists
-- Stacks and queues
-- Algorithmic problem-solving
-- Time and space complexity
-
-### Object-Oriented Programming
-- Classes and objects
-- Encapsulation
-- Abstraction
-- Inheritance
-- Polymorphism
-- Constructors and destructors
-- Functions and modular program design
-
-*The concepts listed above describe the project's academic focus. Refer to the source code for the concepts actually implemented.*
+### ⚡ Technical Implementation
+- Modular frontend and backend architecture.
+- Organized API routes and middleware.
+- Data management using structured files and database services.
+- DSA-based implementation for efficient order processing.
 
 ## 🛠️ Technology Stack
 
 | Technology | Purpose |
 |---|---|
-| Frontend technologies | User interface |
-| Node.js | JavaScript runtime for the backend |
-| Express.js | Server-side application framework |
-| Git & GitHub | Version control and team collaboration |
-| DSA & OOP concepts | Core programming and problem-solving principles |
+| HTML5 | Application structure |
+| CSS3 | Styling and responsive UI |
+| JavaScript | Frontend functionality |
+| Node.js | Backend runtime |
+| Express.js | Backend framework |
+| Supabase | Authentication and backend services |
+| Git & GitHub | Version control |
 
-> Add the exact frontend languages, frameworks, and libraries used by the team.
-
-## 📂 Repository Structure
+## 📂 Project Structure
 
 ```text
 PBL-SEM-3-DSA-AND-OOPS/
 │
-├── backend/          # Server-side application
-├── frontend/         # User interface
-├── package.json      # Project dependencies
-├── package-lock.json # Dependency lock file
-└── README.md         # Project documentation
+├── backend/
+│   ├── data/
+│   ├── middleware/
+│   ├── routes/
+│   ├── utils/
+│   └── ...
+│
+├── frontend/
+│   ├── js/
+│   ├── admin-login.html
+│   ├── admin.html
+│   ├── admin.css
+│   ├── admin.js
+│   ├── signup.html
+│   └── ...
+│
+├── docs/
+│   ├── ADMIN_PORTAL_INTEGRATION.md
+│   ├── AUTH_AND_LIVE_MENU.md
+│   ├── PROJECT_STRUCTURE.md
+│   └── SUPABASE_SETUP.md
+│
+├── supabase/
+│
+├── .env.example
+├── .gitignore
+├── package.json
+├── package-lock.json
+└── README.md
 ```
 
-## ⚙️ Getting Started
+## 🔑 Authentication with Supabase
 
-Follow these steps to run the project locally.
+Campus Bites uses Supabase Authentication to handle user authentication.
+
+The authentication integration provides:
+
+1. User registration through the signup interface.
+2. User login using registered credentials.
+3. Authentication through Supabase services.
+4. Session handling for authenticated users.
+5. Integration with the application's frontend.
+
+Supabase provides authentication infrastructure without requiring the application to implement password storage and verification from scratch.
+
+## ⚙️ Installation and Setup
 
 ### Prerequisites
 
-Install the following tools before starting:
+Make sure you have installed:
 
-- [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/)
-- npm, which is included with Node.js
+- Node.js
+- npm
+- Git
+- A Supabase account
 
-### 1. Clone the Repository
+### 1. Clone the repository
 
 ```bash
 git clone https://github.com/shubhammm1204/PBL-SEM-3-DSA-AND-OOPS.git
 ```
 
-### 2. Open the Project Directory
+### 2. Navigate to the project
 
 ```bash
 cd PBL-SEM-3-DSA-AND-OOPS
 ```
 
-### 3. Install Dependencies
+### 3. Install dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Run the Application
+### 4. Configure Supabase
 
-Check the `package.json` files and instructions inside the `frontend` and `backend` directories for the correct start commands.
+1. Create a project in Supabase.
+2. Open the Supabase project dashboard.
+3. Obtain your Project URL and publishable/anon key.
+4. Configure the credentials using the environment variables expected by your application.
+5. Configure the required authentication settings in Supabase.
 
-For the backend, if the project has an entry file such as `server.js`, you may be able to run:
+Example configuration:
 
-```bash
-node backend/server.js
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_ANON_KEY=your_supabase_publishable_or_anon_key
 ```
 
-Use the actual entry-file path for your project. If the frontend has its own `package.json`, install its dependencies and run its documented development command separately.
+Use the actual variable names expected by your source code.
 
-## 👥 Our Team
+**Security:** Never expose your Supabase service role key, database passwords, or other private credentials in frontend code or GitHub.
 
-This project is the result of collaborative effort, shared learning, and teamwork.
+### 5. Run the application
 
+Use the scripts configured in `package.json` to start the backend and frontend.
 
+For example:
 
-*Update the table with the complete team, correct GitHub profiles, and each member's actual contribution.*
+```bash
+npm run dev
+```
 
-## 🤝 Collaboration & Contributions
+If frontend and backend have separate startup scripts, run them according to their respective package configurations.
 
-As a group academic project, collaboration is an important part of our development process.
+## 🧠 DSA and OOP Concepts
 
-Our team uses Git and GitHub to manage code, track changes, and coordinate development.
+This project is developed as part of the DSA and OOP academic curriculum.
 
-A typical contribution workflow:
+Concepts explored include:
 
-1. Discuss the required feature or improvement with the team.
-2. Create a separate branch for the change.
-3. Implement and test the changes.
-4. Review the code with teammates.
-5. Merge the changes into the main branch after approval.
+- Arrays and dynamic arrays
+- Queues and FIFO processing
+- Hash maps for efficient data lookup
+- Searching and sorting
+- Classes and objects
+- Encapsulation
+- Abstraction
+- Inheritance
+- Polymorphism
+- Modular programming
 
-## 📚 Learning Outcomes
+These concepts are applied where appropriate to the application's implementation.
 
-Through this project, we aim to strengthen our understanding of:
+## 🎯 Project Objectives
 
-- Practical applications of DSA and OOP.
-- Software architecture and modular design.
-- Frontend and backend organization.
-- Debugging and testing.
-- Git, GitHub, and collaborative coding.
-- Teamwork and technical documentation.
-
-## 🎓 Academic Information
-
-- **Project Type:** SMART CANTEEN 
-- **Semester:** 3
-- **Subject Areas:** Data Structures & Algorithms and Object-Oriented Programming
-- **Program:** B.Tech — Computer Science Engineering
-- **Institution:** Graphic Era Hill University
+- Digitize traditional canteen operations.
+- Simplify food ordering and management.
+- Implement authentication using Supabase.
+- Apply DSA concepts to real-world problems.
+- Understand full-stack application development.
+- Practice modular software engineering.
+- Gain experience with collaborative Git workflows.
 
 ## 🔮 Future Improvements
 
-Potential improvements will depend on the project's requirements and current implementation:
+- Online payment gateway integration.
+- Real-time order tracking.
+- Advanced admin analytics dashboard.
+- Improved user experience.
+- Enhanced security and role-based access control.
+- More efficient order management.
 
-- Improve code quality and modularity.
-- Add input validation and error handling.
-- Expand test coverage.
-- Improve user interface and accessibility.
-- Optimize algorithms where appropriate.
-- Add documentation and usage examples.
+## 🎓 Academic Information
 
-## 📌 Project Repository
+| Detail | Information |
+|---|---|
+| Project Name | Campus Bites |
+| Project Type | Smart Canteen Management System |
+| Semester | 3 |
+| Program | B.Tech CSE |
+| Institution | Graphic Era Hill University |
+| Subject | Data Structures & Algorithms and OOP |
 
-**GitHub:** [PBL-SEM-3-DSA-AND-OOPS](https://github.com/shubhammm1204/PBL-SEM-3-DSA-AND-OOPS)
+## 👨‍💻 Project Repository
 
-If you find this project useful for learning, feel free to explore the repository.
+GitHub: https://github.com/shubhammm1204/PBL-SEM-3-DSA-AND-OOPS
 
 ---
 
-<p align="center">
-  <b>Built with 💻, teamwork 🤝, and a passion for learning 🚀</b>
-  <br/>
-  <i>Semester 3 — Project-Based Learning</i>
-</p>
+**Built with 💻, teamwork 🤝, and innovation 🚀**
 
-
-## Campus Bites Admin Portal
-
-The admin UI is available at `frontend/admin.html` when the Express server is running. It is currently a frontend prototype using sample data. See [`docs/PROJECT_STRUCTURE.md`](docs/PROJECT_STRUCTURE.md) and [`docs/ADMIN_PORTAL_INTEGRATION.md`](docs/ADMIN_PORTAL_INTEGRATION.md) for the folder layout and integration status.
-
-
-## Supabase admin setup
-See [docs/SUPABASE_SETUP.md](docs/SUPABASE_SETUP.md) for local admin authentication, token recharge, database setup, and current menu-sync limitations.
-
-
-## Authentication and live admin menu
-See `docs/AUTH_AND_LIVE_MENU.md` for the student login/signup flow, separate admin URL, Supabase SQL setup, and live menu synchronization.
+*Campus Bites | Smart Canteen Management System*
