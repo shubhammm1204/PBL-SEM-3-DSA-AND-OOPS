@@ -1,4 +1,4 @@
-# 🍽️ SmartCanteen | Canteen Management System
+# 🍽️ SmartCanteen — Canteen Management System
 
 <p align="center">
   <b>A Smart Digital Solution for Campus Food Ordering & Canteen Management</b>
@@ -15,17 +15,21 @@
 
 ## 📌 About The Project
 
-**SmartCanteen** is a full-stack Canteen Management System developed to digitize and simplify food ordering and daily canteen operations within a college campus.
+**SmartCanteen** is a digital Canteen Management System developed to simplify and modernize food ordering and daily canteen operations within a college campus.
 
 The system provides a centralized platform for managing students, food menus, orders, staff operations, and student account balances.
 
-Developed using C++, Data Structures & Algorithms, Object-Oriented Programming, and web technologies, this project demonstrates how fundamental computer science concepts can be applied to solve real-world management problems.
+Developed using C++, Data Structures & Algorithms (DSA), Object-Oriented Programming (OOP), and web technologies, this project demonstrates how fundamental computer science concepts can be applied to solve real-world management problems.
 
-The project has been successfully completed as part of the **Semester III Project-Based Learning (PBL)** curriculum.
+The project was developed as part of the **Semester III Project-Based Learning (PBL)** curriculum at Graphic Era Hill University.
 
 ## 🏆 Project Status
 
-**<span style="color:green">COMPLETED</span>**
+<p align="center">
+  <img src="https://img.shields.io/badge/STATUS-COMPLETED-brightgreen?style=for-the-badge&logo=checkmarx" />
+</p>
+
+The project development and implementation have been completed.
 
 - [x] Project planning and architecture
 - [x] Frontend development
@@ -37,19 +41,20 @@ The project has been successfully completed as part of the **Semester III Projec
 - [x] Staff management
 - [x] Student balance management
 - [x] API integration
-- [x] DSA and OOP implementation
+- [x] DSA implementation
+- [x] OOP implementation
 - [x] Project documentation
 
-## ✨ Features
+## ✨ Key Features
 
 ### 👨‍🎓 Student Management
-- Student information management.
-- Student account balance management.
-- Balance checking before order processing.
+- Manage student information.
+- Maintain student account balances.
+- Check available balance before placing orders.
 
 ### 🍔 Food & Menu Management
 - View available food items.
-- Access food item information and pricing.
+- Access food item details and pricing.
 - Organize menu-related operations.
 
 ### 🛒 Order Management
@@ -63,31 +68,31 @@ The project has been successfully completed as part of the **Semester III Projec
 - Process pending food orders.
 - Update order processing status.
 
-### 🔄 Automated Order Processing
+### 🔄 Order Processing
 - FIFO-based order processing.
 - Queue-based pending order management.
 - Organized order status handling.
 
 ## 🛠️ Technology Stack
 
-| Technology | Application |
+| Technology | Purpose |
 |---|---|
-| C++ | Core business logic |
+| C++ | Core application logic |
 | HTML5 | Frontend structure |
 | CSS3 | User interface styling |
 | JavaScript | Frontend functionality |
 | Node.js | Backend runtime |
-| Express.js | API integration |
+| Express.js | Backend framework |
 | JSON | Data communication |
-| Git & GitHub | Version control |
+| Git & GitHub | Version control and collaboration |
 
 ## 🧠 Data Structures & Algorithms
 
-The project applies DSA concepts to manage real-world canteen operations.
+The project demonstrates the practical application of data structures and algorithms in canteen operations.
 
 | Data Structure / Concept | Application |
 |---|---|
-| Queue | FIFO order processing |
+| Queue | FIFO-based order processing |
 | Vector | Dynamic order-item management |
 | Searching | Finding menu items and records |
 | Sorting | Organizing data where required |
@@ -98,62 +103,79 @@ The pending orders are maintained using a queue.
 
 **FIFO (First In, First Out)** ensures that the first order placed is processed before subsequent orders.
 
-This helps maintain a systematic and fair order-processing workflow.
+This provides a systematic and organized order-processing workflow.
 
 ## 🏗️ Object-Oriented Programming
 
-The application demonstrates the four pillars of OOP:
+The project implements the four fundamental principles of Object-Oriented Programming.
 
-- **Encapsulation:** Protecting student and application data through controlled class methods.
-- **Inheritance:** Reusing common functionality through base and derived classes.
-- **Polymorphism:** Using virtual functions and function overriding for flexible behavior.
-- **Abstraction:** Hiding implementation details and exposing essential functionality.
+### 1. Encapsulation
+Student information and account balances are managed through class members and controlled methods.
 
-Additional concepts include classes, objects, constructors, destructors, pointers, dynamic memory allocation, and virtual functions.
+### 2. Inheritance
+The `Student` class inherits from the `User` base class, allowing common functionality to be reused.
+
+### 3. Polymorphism
+Virtual functions and function overriding allow derived classes to provide their own implementations.
+
+### 4. Abstraction
+Classes separate internal implementation details from application-level operations.
+
+### Additional OOP Concepts
+- Classes and Objects
+- Constructors and Destructors
+- Virtual Functions
+- Function Overriding
+- Pointers
+- Dynamic Memory Allocation
+- Access Specifiers
 
 ## 🔌 API Integration
 
-The C++ application logic communicates with the backend through structured JSON-based API operations.
-
-The API layer helps connect frontend requests with the underlying canteen management functionality.
+The system uses JSON-based communication to connect application requests with the underlying canteen management functionality.
 
 Core application operations include:
 
 - Student balance retrieval.
-- Order creation.
+- Food order creation.
 - Order processing.
 - Table-wise order retrieval.
-- Staff and student management.
+- Student and staff management.
+
+The API layer helps connect frontend functionality with the C++ application logic.
 
 ## 🏛️ System Architecture
 
 ```text
-             STUDENT / STAFF
-                    |
-                    v
-          +--------------------+
-          |     FRONTEND       |
-          |   HTML / CSS / JS  |
-          +--------------------+
-                    |
-                    v
-          +--------------------+
-          |     BACKEND        |
-          |    Node.js / API   |
-          +--------------------+
-                    |
-                    v
-          +--------------------+
-          |   C++ API LAYER    |
-          | Application Logic  |
-          +--------------------+
-                    |
-                    v
-          +--------------------+
-          |  CANTEEN SYSTEM    |
-          | Student / Orders   |
-          | Staff / Menu       |
-          +--------------------+
+              STUDENT / STAFF
+                     |
+                     v
+          +----------------------+
+          |       FRONTEND       |
+          |    HTML / CSS / JS   |
+          +----------------------+
+                     |
+                     v
+          +----------------------+
+          |        BACKEND       |
+          |      Node.js / API   |
+          +----------------------+
+                     |
+                     v
+          +----------------------+
+          |     C++ API LAYER    |
+          |   Application Logic  |
+          +----------------------+
+                     |
+                     v
+          +----------------------+
+          |    CANTEEN SYSTEM    |
+          |                      |
+          |  Student Management  |
+          |  Order Management    |
+          |  Staff Management    |
+          |  Menu Management     |
+          +----------------------+
 ```
 
 ## 📂 Project Structure
@@ -179,49 +201,65 @@ PBL-SEM-3-DSA-AND-OOPS/
 └── README.md
 ```
 
-## 🚀 Getting Started
+## ⚙️ Installation & Setup
 
 ### Prerequisites
 
-- C++ compiler (GCC / MinGW)
-- Node.js and npm
+Make sure the following tools are installed:
+
 - Git
+- Node.js
+- npm
+- C++ compiler (GCC / MinGW)
 - Visual Studio Code (recommended)
 
-### 1. Clone Repository
+### Step 1: Clone the Repository
 
 ```bash
 git clone https://github.com/shubhammm1204/PBL-SEM-3-DSA-AND-OOPS.git
 ```
 
-### 2. Navigate to Project
+### Step 2: Navigate to the Project
 
 ```bash
 cd PBL-SEM-3-DSA-AND-OOPS
 ```
 
-### 3. Install Dependencies
+### Step 3: Install Dependencies
 
 ```bash
 npm install
 ```
 
-### 4. Run the Application
+### Step 4: Run the Application
 
-Start the frontend and backend using their configured development scripts and follow the project's setup instructions.
+Navigate to the relevant frontend and backend directories and execute their configured development scripts.
+
+For example, if the frontend uses Vite:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Start the backend using its configured entry point and npm script.
+
+> **Note:** The exact startup commands depend on the scripts configured in the project's package.json files.
 
 ## 👨‍💻 Team & Contributions
 
-This project was developed collaboratively by B.Tech Computer Science Engineering students.
+This project was developed collaboratively by B.Tech Computer Science Engineering students as part of the Semester III Project-Based Learning (PBL) curriculum at Graphic Era Hill University.
 
-**My Contribution — Siddhant Butola**
+The team worked together on:
 
-- API development and integration.
+- Project planning and system architecture.
+- Frontend development.
+- Backend development and API integration.
 - C++ application logic.
-- Order processing and staff management.
-- Implementation of OOP concepts.
-- Integration of frontend requests with backend functionality.
-- Main application entry point (`main.cpp`).
+- Data Structures & Algorithms implementation.
+- Object-Oriented Programming concepts.
+- Testing, integration, and documentation.
 
 ## 🎯 Project Outcomes
 
@@ -231,12 +269,13 @@ Through this project, we successfully demonstrated:
 - Application of Object-Oriented Programming principles.
 - Frontend and backend integration.
 - API-based communication.
-- Modular application development.
+- Modular software development.
+- Real-world problem-solving using C++.
 - Collaborative software development using Git and GitHub.
 
-## 🔮 Future Scope
+## 🚀 Future Scope
 
-Although the current project is completed, the system can be extended with:
+Although the current project is completed, several enhancements can be introduced in future versions:
 
 - Online payment gateway integration.
 - QR-based student identification.
@@ -244,32 +283,39 @@ Although the current project is completed, the system can be extended with:
 - Advanced sales and analytics dashboard.
 - Database-driven cloud storage.
 - Mobile application support.
+- Enhanced authentication and security.
 
-## 🎓 Academic Details
+## 🎓 Academic Information
 
-| Field | Details |
+| Detail | Information |
 |---|---|
 | Project Name | SmartCanteen |
 | Project Type | Project-Based Learning |
 | Semester | III |
-| Course | B.Tech CSE |
+| Program | B.Tech – Computer Science Engineering |
 | Institution | Graphic Era Hill University |
 | Subject | Data Structures & Algorithms / OOP |
 
 ## 🤝 Acknowledgement
 
-We would like to express our gratitude to our faculty members and mentors for their guidance and support throughout the development of this project.
+We would like to express our sincere gratitude to our faculty members and mentors for their guidance, encouragement, and support throughout the development of this project.
 
-This project provided valuable practical experience in software engineering, programming, problem-solving, and teamwork.
+This project provided valuable practical experience in software engineering, programming, problem-solving, teamwork, and application development.
 
 ---
 
 <p align="center">
-  <b>🎉 PROJECT SUCCESSFULLY COMPLETED 🎉</b>
+  <img src="https://img.shields.io/badge/PROJECT-SUCCESSFULLY%20COMPLETED-brightgreen?style=for-the-badge" />
+</p>
+
+<p align="center">
+  <b>SmartCanteen — Making Campus Food Management Smarter.</b>
   <br/><br/>
-  <i>Built with C++, DSA, OOP and Teamwork.</i>
+  Built with C++, DSA, OOP & Teamwork 
   <br/><br/>
   ⭐ If you find this project interesting, consider giving the repository a star!
 </p>
 
-**Repository:** https://github.com/shubhammm1204/PBL-SEM-3-DSA-AND-OOPS
+---
+
+**Repository:** [PBL-SEM-3-DSA-AND-OOPS](https://github.com/shubhammm1204/PBL-SEM-3-DSA-AND-OOPS)
