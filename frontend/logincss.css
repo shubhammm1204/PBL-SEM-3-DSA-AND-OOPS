@@ -1,0 +1,99 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background:url(loginpagebg.png) no-repeat;
+    background-position: center;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.login-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+.Welcome-heading{
+color: white;
+font-size: 2.2rem;
+font-weight: 700;
+text-align: center;
+margin: 0;
+}
+.login-box{
+    width: 400px;
+    height:500px ;
+    backdrop-filter: blur(15px);
+    border: 3px solid black;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    border-radius: 50px;
+}
+h1{
+    color: white;
+    font-size: 2rem;
+    padding: 25px 0;
+}
+.form{
+    position: relative;
+    width: 350px;
+    margin: 30px 0;
+    border-bottom:3px solid black;
+
+}
+.form input{
+    width: 100%;
+    height: 50px;
+    background:transparent;
+    border: none;
+    outline: none;
+    font-size: 1.3rem;
+    padding: 0 25px 0 10px;
+}
+.form label{
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    color: white;
+    transform: translateY(-50%);
+    transition: 0.5s;
+
+}
+input:focus~label,
+input:valid~label{
+    top: -5px;
+}
+p{
+    text-align: center;
+    color: white;
+    padding: 12px 0;
+}
+p>a{
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+}
+p>a:hover{
+    text-decoration: underline;
+    font-style: italic;
+}
+#btn{
+    height: 50px;
+    width: 80px;
+    border-radius: 40px;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    background-color: white;
+    border-color: black;
+}
+#btn:hover{
+    border: white;
+    transform: scale(1.05);
+}

@@ -1,0 +1,150 @@
+#include <iostream>
+#include <vector>
+#include <queue>
+#include <unordered_map>
+#include <algorithm>
+#include <numeric>
+
+#include "models/user.h"
+#include "models/students.h"
+#include "models/menuItems.h"
+#include "models/orders.h"
+#include "file storage/storage.h"
+#include "services/canteenSystem.h"
+
+using namespace std;
+
+
+void demonstrateOOP() {
+  
+
+    // 1. INHERITANCE & POLYMORPHISM
+  
+
+    User* userPtr = new Student("GEU101", "Rahul", 200);
+    cout << "Created user via User* base pointer:\n";
+    userPtr->displayInfo(); 
+    cout << "Role identified dynamically via getRole(): " << userPtr->getRole() << "\n";
+
+    // 2. ENCAPSULATION
+   
+    Student student("GEU101", "Rahul", 200);
+    cout << "Initial balance: ₹" << student.getBalance() << "\n";
+    cout << "Attempting to deduct ₹300 (exceeds balance):\n";
+    bool deductedFail = student.deductBalance(300);
+    cout << "  Deduction result: " << (deductedFail ? "Success" : "REJECTED (Insufficient balance)") << "\n";
+    cout << "  Balance remains unchanged: ₹" << student.getBalance() << "\n";
+
+    cout << "Attempting to deduct ₹69 (valid purchase):\n";
+    bool deductedSuccess = student.deductBalance(69);
+    cout << "  Deduction result: " << (deductedSuccess ? "SUCCESS" : "Failed") << "\n";
+    cout << "  Updated balance: ₹" << student.getBalance() << "\n";
+
+    // 3. COMPOSITION
+    cout << "\n[C] COMPOSITION (Order HAS-A vector<OrderItem>):\n";
+    vector<OrderItem> items;
+    items.push_back(OrderItem("M001", "Campus Burger", 1, 69));
+    items.push_back(OrderItem("M005", "Cold Coffee", 1, 45));
+    Order order("ORD1001", "GEU101", 1, items, 114);
+
+    cout << "Order " << order.getOrderId() << " for Table " << order.getTableNumber() << " contains:\n";
+    for (const auto& item : order.getItems()) {
+        cout << "  - " << item.getName() << " x " << item.getQuantity() 
+             << " @ ₹" << item.getPrice() << " each = ₹" << item.getSubtotal() << "\n";
+    }
+    cout << "Total Amount: ₹" << order.getTotalAmount() << "\n";
+
+    // 4. ABSTRACTION & POLYMORPHISM (Storage Interface)
+  
+  
+    BaseStorage* storage = new Storage();
+    bool saved = storage->saveStudent("GEU101", "Rahul", student.getBalance());
+    cout << "Storage->saveStudent() called through BaseStorage* pointer: " 
+         << (saved ? "SUCCESS" : "Failed") << "\n";
+
+    delete userPtr;
+    delete storage;
+}
+
+void demonstrateDSA() {
+ 
+
+    // 1. HASH MAP (std::unordered_map) - O(1) Fast Lookup
+  
+    unordered_map<string, int> menuPriceMap;
+    menuPriceMap["M001"] = 69;   // Campus Burger
+    menuPriceMap["M002"] = 99;   // Cheese Pizza
+    menuPriceMap["M003"] = 50;   // Masala Noodles
+    menuPriceMap["M004"] = 49;   // French Fries
+
+    string searchItem = "M001";
+    cout << "Looking up item ID '" << searchItem << "' in Hash Map...\n";
+    if (menuPriceMap.find(searchItem) != menuPriceMap.end()) {
+        cout << "  Found! Price: ₹" << menuPriceMap[searchItem] 
+             << " (Time Complexity: O(1) constant time)\n";
+    }
+
+    // 2. QUEUE (std::queue) - FIFO Order Processing
+   
+    queue<string> kitchenQueue;
+    kitchenQueue.push("ORD1001 (Table 1)"); // Enqueue 1
+    kitchenQueue.push("ORD1002 (Table 3)"); // Enqueue 2
+    kitchenQueue.push("ORD1003 (Table 2)"); // Enqueue 3
+
+    cout << "Orders enqueued into kitchen. Queue size: " << kitchenQueue.size() << "\n";
+    while (!kitchenQueue.empty()) {
+        cout << "  Kitchen cooking next order: " << kitchenQueue.front() << "\n";
+        kitchenQueue.pop(); // Dequeue oldest order
+    }
+  
+
+    // 3. STL ACCUMULATE (std::accumulate) - Summing Order Total
+
+    vector<int> itemSubtotals = {69, 45, 50}; // 69 + 45 + 50
+    int total = accumulate(itemSubtotals.begin(), itemSubtotals.end(), 0);
+    cout << "Calculated total from item subtotals using std::accumulate: ₹" << total << "\n";
+
+    // 4. SORTING (std::sort) - O(N log N)
+    vector<pair<string, int>> items = {
+        {"Cheese Pizza", 99},
+        {"Cold Coffee", 45},
+        {"Campus Burger", 69},
+        {"French Fries", 49}
+    };
+
+    // Sort ascending by price
+    sort(items.begin(), items.end(), [](const pair<string, int>& a, const pair<string, int>& b) {
+        return a.second < b.second;
+    });
+
+    cout << "Menu sorted by price (Budget friendly to Premium):\n";
+    for (const auto& item : items) {
+        cout << "  - " << item.first << ": ₹" << item.second << "\n";
+    }
+}
+
+int main() {
+  
+
+    demonstrateOOP();
+    demonstrateDSA();
+
+
+
+    Storage storage;
+    vector<string> students = storage.loadStudents();
+    vector<string> orders = storage.loadOrders();
+
+    cout << "Loaded Students from storage:\n";
+    for (const string& rec : students) {
+        cout << "  " << rec << "\n";
+    }
+
+    cout << "Loaded Orders from storage:\n";
+    for (const string& rec : orders) {
+        cout << "  " << rec << "\n";
+    }
+
+  
+    return 0;
+}
