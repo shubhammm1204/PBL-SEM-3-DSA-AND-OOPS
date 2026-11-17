@@ -15,3 +15,5 @@
 4. Open `http://localhost:5000/admin.html`.
 
 This preview does not require deployment. The existing C++ bridge is not modified by adding these frontend files.
+## Phase 3 Order Queue Verification
+- Verified live order status updates (`Pending`, `Preparing`, `Completed`) sync with `data/orders.txt`.
